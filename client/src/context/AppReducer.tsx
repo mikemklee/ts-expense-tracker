@@ -17,7 +17,7 @@ export interface AddTransactionAction {
 
 export interface DeleteTransactionAction {
   type: typeof DELETE_TRANSACTION;
-  payload: number;
+  payload: string;
 }
 
 export interface TransactionErrorAction {
@@ -46,7 +46,7 @@ export const addTransaction = (
   payload: transaction,
 });
 
-export const deleteTransaction = (id: number): DeleteTransactionAction => ({
+export const deleteTransaction = (id: string): DeleteTransactionAction => ({
   type: DELETE_TRANSACTION,
   payload: id,
 });
@@ -75,7 +75,7 @@ export default (state: GlobalState, action: ActionTypes): GlobalState => {
       return {
         ...state,
         transactions: state.transactions.filter(
-          item => item.id !== action.payload
+          item => item._id !== action.payload
         ),
       };
     case TRANSACTION_ERROR:

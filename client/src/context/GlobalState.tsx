@@ -2,8 +2,13 @@ import React, { useReducer, ReactNode, Dispatch } from 'react';
 
 import AppReducer, { ActionTypes } from './AppReducer';
 
+export type TempTransactionItem = {
+  text: string;
+  amount: number;
+};
+
 export type TransactionItem = {
-  id: number;
+  _id: string;
   text: string;
   amount: number;
 };

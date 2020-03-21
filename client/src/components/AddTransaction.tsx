@@ -1,24 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, FormEvent } from 'react';
 
-import { TransactionItem, GlobalContext } from '../context/GlobalState';
-import { addTransaction } from '../context/AppReducer';
+import { TempTransactionItem } from '../context/GlobalState';
+import { useAddTransaction } from '../hooks/useAddTransaction';
 
 const AddTransaction = () => {
   const [text, setText] = useState('');
   const [amount, setAmount] = useState('');
 
-  const { dispatch } = useContext(GlobalContext);
+  const [addItem] = useAddTransaction();
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const newTransaction: TransactionItem = {
-      id: Math.floor(Math.random() * 1000000),
+    const newTransaction: TempTransactionItem = {
       text,
       amount: +amount,
     };
-
-    dispatch(addTransaction(newTransaction));
+    addItem(newTransaction);
 
     // clear forms
     setText('');

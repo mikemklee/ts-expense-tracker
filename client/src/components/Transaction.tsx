@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { TransactionItem, GlobalContext } from '../context/GlobalState';
-import { deleteTransaction } from '../context/AppReducer';
+import { TransactionItem } from '../context/GlobalState';
+import { useDeleteTransaction } from '../hooks/useDeleteTransaction';
 
 type TransactionProps = {
   item: TransactionItem;
 };
 
 const Transaction = ({ item }: TransactionProps) => {
-  const { dispatch } = useContext(GlobalContext);
+  const [deleteItem] = useDeleteTransaction();
 
   const sign = item.amount > 0 ? '+' : '-';
 
@@ -18,10 +18,7 @@ const Transaction = ({ item }: TransactionProps) => {
       <span>
         {sign}${Math.abs(item.amount)}
       </span>
-      <button
-        className="delete-btn"
-        onClick={() => dispatch(deleteTransaction(item.id))}
-      >
+      <button className="delete-btn" onClick={() => deleteItem(item._id)}>
         x
       </button>
     </li>

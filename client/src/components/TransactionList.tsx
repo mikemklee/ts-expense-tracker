@@ -17,7 +17,7 @@ const TransactionList = () => {
       <ul className="list">
         {transactions.length === 0 && 'No previous transactions to show.'}
         {transactions.map(item => (
-          <Transaction key={item.id} item={item} />
+          <Transaction key={item._id} item={item} />
         ))}
       </ul>
     </>
