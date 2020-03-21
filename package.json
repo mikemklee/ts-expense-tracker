@@ -13,7 +13,8 @@
     "client": "npm start --prefix client",
     "build:all": "npm run build:server && npm run build:client",
     "run:all": "concurrently \"npm run watch:server\" \"npm run server\" \"npm run watch:client\" \"npm run client\"",
-    "dev": "npm run build:all && npm run run:all"
+    "dev": "npm run build:all && npm run run:all",
+    "pre-deploy": "tsc && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
