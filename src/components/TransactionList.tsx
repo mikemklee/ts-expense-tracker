@@ -13,6 +13,7 @@ const TransactionList = () => {
     <>
       <h3>History</h3>
       <ul className="list">
+        {transactions.length === 0 && 'No previous transactions to show.'}
         {transactions.map(item => (
           <Transaction key={item.id} item={item} />
         ))}

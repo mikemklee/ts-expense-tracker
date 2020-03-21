@@ -13,7 +13,7 @@ const Transaction = ({ item }: TransactionProps) => {
   const sign = item.amount > 0 ? '+' : '-';
 
   return (
-    <li className="minus">
+    <li className={item.amount > 0 ? 'plus' : 'minus'}>
       {item.text}{' '}
       <span>
         {sign}${Math.abs(item.amount)}
