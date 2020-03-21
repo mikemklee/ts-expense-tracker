@@ -3,11 +3,13 @@ import React, { useContext } from 'react';
 import Transaction from './Transaction';
 
 import { GlobalContext } from '../context/GlobalState';
+import { useGetTransactions } from '../hooks/useGetTransactions';
 
 const TransactionList = () => {
   const { state } = useContext(GlobalContext);
-
   const { transactions } = state;
+
+  useGetTransactions();
 
   return (
     <>

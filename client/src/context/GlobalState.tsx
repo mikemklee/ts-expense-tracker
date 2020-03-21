@@ -12,11 +12,15 @@ export type Transactions = TransactionItem[];
 
 export type GlobalState = {
   transactions: Transactions;
+  loading: boolean;
+  error: any;
 };
 
 // Initial state
 const initialState: GlobalState = {
   transactions: [],
+  loading: false,
+  error: null,
 };
 
 interface ContextProps {
