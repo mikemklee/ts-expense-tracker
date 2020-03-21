@@ -1,6 +1,6 @@
-import React, { useReducer, ReactNode } from 'react';
+import React, { useReducer, ReactNode, Dispatch } from 'react';
 
-import AppReducer from './AppReducer';
+import AppReducer, { ActionTypes } from './AppReducer';
 
 export type TransactionItem = {
   id: number;
@@ -16,16 +16,16 @@ export type GlobalState = {
 
 // Initial state
 const initialState: GlobalState = {
-  transactions: [
-    { id: 1, text: 'Flower', amount: -20 },
-    { id: 2, text: 'Salary', amount: 300 },
-    { id: 3, text: 'Book', amount: -10 },
-    { id: 4, text: 'Camera', amount: 150 },
-  ],
+  transactions: [],
 };
 
+interface ContextProps {
+  state: GlobalState;
+  dispatch: Dispatch<ActionTypes>;
+}
+
 // Create context
-export const GlobalContext = React.createContext(initialState);
+export const GlobalContext = React.createContext({} as ContextProps);
 
 // Provider component
 
@@ -36,15 +36,9 @@ type ProviderProps = {
 export const GlobalProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  const MyProvider = GlobalContext.Provider;
+  const value = { state, dispatch };
 
   return (
-    <MyProvider
-      value={{
-        transactions: state.transactions,
-      }}
-    >
-      {children}
-    </MyProvider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };

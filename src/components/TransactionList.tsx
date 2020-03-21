@@ -5,7 +5,9 @@ import Transaction from './Transaction';
 import { GlobalContext } from '../context/GlobalState';
 
 const TransactionList = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { state } = useContext(GlobalContext);
+
+  const { transactions } = state;
 
   return (
     <>

@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { TransactionItem, GlobalContext } from '../context/GlobalState';
+import { addTransaction } from '../context/AppReducer';
 
 const AddTransaction = () => {
   const [text, setText] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
+
+  const { dispatch } = useContext(GlobalContext);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const newTransaction: TransactionItem = {
+      id: Math.floor(Math.random() * 1000000),
+      text,
+      amount: +amount,
+    };
+
+    dispatch(addTransaction(newTransaction));
+
+    // clear forms
+    setText('');
+    setAmount('');
+  };
 
   return (
     <>
       <h3>Add new transaction</h3>
-      <form action="">
+      <form onSubmit={onSubmit}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
           <input
@@ -25,7 +46,7 @@ const AddTransaction = () => {
           <input
             type="number"
             value={amount}
-            onChange={e => setAmount(+e.target.value)}
+            onChange={e => setAmount(e.target.value)}
             placeholder="Enter amount..."
           />
         </div>
