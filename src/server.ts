@@ -1,13 +1,18 @@
+import 'colors';
 import express from 'express';
 import dotenv from 'dotenv';
-import 'colors';
 import morgan from 'morgan';
 
-dotenv.config({ path: './config/config.env' });
+import { connectDB } from './config/db';
+import { router as transactionsRouter } from './routes/transactions';
+
+dotenv.config({ path: './src/config/config.env' });
+
+connectDB();
 
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello there'));
+app.use('/api/v1/transactions', transactionsRouter);
 
 const PORT = process.env.PORT || 4000;
 

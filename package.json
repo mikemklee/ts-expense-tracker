@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/leemun1/ts-expense-tracker#readme",
   "dependencies": {
+    "@types/mongoose": "^5.7.7",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

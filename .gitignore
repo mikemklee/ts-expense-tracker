@@ -1,5 +1,9 @@
+# ignore dependencies
 node_modules
 /client/node_modules
 
+# ignore compiled code
 dist
-config
+
+# ignore env vars
+**/*.env
