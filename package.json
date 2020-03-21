@@ -4,7 +4,7 @@
   "description": "Simple expense tracker",
   "main": "src/server.js",
   "scripts": {
-    "start": "node server",
+    "start": "node dist/server",
     "build:server": "tsc",
     "watch:server": "tsc -w",
     "build:client": "tsc -p ./client",
