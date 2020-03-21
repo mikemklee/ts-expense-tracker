@@ -1,0 +1,31 @@
+{
+  "name": "ts-expense-tracker",
+  "version": "1.0.0",
+  "description": "Simple expense tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leemun1/ts-expense-tracker.git"
+  },
+  "author": "Mike Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leemun1/ts-expense-tracker/issues"
+  },
+  "homepage": "https://github.com/leemun1/ts-expense-tracker#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
