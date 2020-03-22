@@ -7,7 +7,7 @@ import path from 'path';
 import { connectDB } from './config/db';
 import { router as transactionsRouter } from './routes/transactions';
 
-dotenv.config({ path: './src/config/config.env' });
+dotenv.config({ path: './server/config/config.env' });
 
 connectDB();
 

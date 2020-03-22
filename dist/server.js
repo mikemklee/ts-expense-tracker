@@ -10,7 +10,7 @@ var morgan_1 = __importDefault(require("morgan"));
 var path_1 = __importDefault(require("path"));
 var db_1 = require("./config/db");
 var transactions_1 = require("./routes/transactions");
-dotenv_1.default.config({ path: './src/config/config.env' });
+dotenv_1.default.config({ path: './server/config/config.env' });
 db_1.connectDB();
 var app = express_1.default();
 app.use(express_1.default.json());
